@@ -1,0 +1,13 @@
+.flex-row{
+    display: flex;
+    flex-direction: row;
+}
+
+.mb-10{
+    margin-bottom: 10px;
+}
+
+.reverse-row{
+    display: flex;
+    flex-direction: row-reverse;
+}
