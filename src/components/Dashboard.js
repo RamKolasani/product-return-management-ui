@@ -51,18 +51,18 @@ function Dashboard() {
                         mode="inline"
                     >
 
-                        <Menu.ItemGroup key="home" title={<Title level={3}>fala returns</Title>} ></Menu.ItemGroup>
+                        <Menu.ItemGroup key="home" title={<span className="title">fala returns</span>} ></Menu.ItemGroup>
                         <Divider />
                         <Menu.ItemGroup key="catalog" title="Catalog">
                             <Menu.Item key="categories" icon={<PieChartOutlined />}>Catogries</Menu.Item>
                             <Menu.Item key="product_class" icon={<AppstoreOutlined />}>Product Class</Menu.Item>
-                            <Menu.Item key="products" icon={<CodeSandboxOutlined />}>Products</Menu.Item>
+                            <Menu.Item key="products" disabled icon={<CodeSandboxOutlined />}>Products</Menu.Item>
                             <Menu.Item key="returns" icon={<RollbackOutlined />}>Returns</Menu.Item>
                         </Menu.ItemGroup>
                         {/* <Divider /> */}
                         <Menu.ItemGroup key="portal" title="Rule Engine">
-                            <Menu.Item key="core_business_rules" icon={<MenuOutlined />}>Core Rules</Menu.Item>
-                            <Menu.Item key="business_rules" icon={<TableOutlined />}>Rules</Menu.Item>
+                            <Menu.Item key="core_business_rules" icon={<MenuOutlined />}>Core Actions</Menu.Item>
+                            <Menu.Item key="business_rules" icon={<TableOutlined />}>Actions</Menu.Item>
                             <Menu.Item key="business_questionnaires" icon={<QuestionOutlined />}>Questionnaires</Menu.Item>
                             <Menu.Item key="ai_model" icon={<RadarChartOutlined />}>AI Modal Interface</Menu.Item>
                         </Menu.ItemGroup>
@@ -185,14 +185,14 @@ function BusinessRulesCore() {
 
     return (
         <div>
-            <Card title="Core Rules"
+            <Card title="Core Actions"
                 extra={<Row gutter={16}>
                     <Col>
                         <Button
                             type="primary"
                             onClick={() => { setShowAddCoreRuleDrawer(!showAddCoreRuleDrawer) }
                             } >
-                            <PlusOutlined />Add Core Rule
+                            <PlusOutlined />Add Core Action
                         </Button>
                     </Col></Row>} >
                 <Table
@@ -200,7 +200,7 @@ function BusinessRulesCore() {
                     dataSource={coreBusinessRulesList}
                 />
             </Card>
-            <Drawer title="Add Core Rule" placement="right" width="30%" onClose={() => {
+            <Drawer title="Add Core Action" placement="right" width="30%" onClose={() => {
                 setrowSelected({})
                 setmode('add')
                 setTitle('')
@@ -210,7 +210,7 @@ function BusinessRulesCore() {
                 <Space direction="vertical" width="100%" size="middle">
                     <Tag style={{ lineHeight: '28px', fontSize: '14px' }}>Title </Tag>
                     {/* <Title level={5}>Title</Title> */}
-                    <Input style={{ width: 400 }} placeholder="Enter title of Core rule" onChange={e => setTitle(e.target.value)} value={title} />
+                    <Input style={{ width: 400 }} placeholder="Enter title of Core action" onChange={e => setTitle(e.target.value)} value={title} />
                     <Tag style={{ lineHeight: '28px', fontSize: '14px' }}>Description </Tag><TextArea style={{ width: 400 }} rows={3} onChange={e => setDescription(e.target.value)} value={description} />
 
                     {/* <Divider /> */}
@@ -267,7 +267,7 @@ function BusinessRules() {
             dataIndex: 'description',
             key: 'description',
         }, {
-            title: 'Associated Core Business Rule',
+            title: 'Associated Core Action',
             dataIndex: 'associatedCoreBusinessRule',
             key: 'associatedCoreBusinessRule',
         },
@@ -332,14 +332,14 @@ function BusinessRules() {
 
     return (
         <div>
-            <Card title="Rules"
+            <Card title="Actions"
                 extra={<Row gutter={16}>
                     <Col>
                         <Button
                             type="primary"
                             onClick={() => { setShowAddRuleDrawer(!showAddRuleDrawer) }
                             } >
-                            <PlusOutlined />Add Rule
+                            <PlusOutlined />Add Action
                         </Button>
                     </Col></Row>} >
                 <Table
@@ -347,7 +347,7 @@ function BusinessRules() {
                     dataSource={businessRulesList}
                 />
             </Card>
-            <Drawer title="Add Core Rule" placement="right" width="30%" onClose={() => {
+            <Drawer title="Add Core Action" placement="right" width="30%" onClose={() => {
                 setrowSelected({})
                 setmode('add')
                 setTitle('')
@@ -356,18 +356,18 @@ function BusinessRules() {
                 setShowAddRuleDrawer(false)
             }} visible={showAddRuleDrawer}>
                 <Space direction="vertical" width="100%" size="middle">
-                    <Tag style={{ lineHeight: '28px', fontSize: '14px' }}>Associate a Core Rule </Tag>
+                    <Tag style={{ lineHeight: '28px', fontSize: '14px' }}>Associate a Core Action </Tag>
                     <Select
                         showSearch
                         value={associatedCoreBusinessRule}
                         style={{ width: 400 }}
-                        placeholder="Select a Core Rule to associate"
+                        placeholder="Select a Core Action to associate"
                         onChange={val => setassociatedCoreBusinessRule(val)}
                     >
                         {coreBusinessRulesList.map(item => <Option value={item.title} key={item.id}>{item.title}</Option>)}
                     </Select>
                     <Tag style={{ lineHeight: '28px', fontSize: '14px' }}>Title </Tag>
-                    <Input style={{ width: 400 }} placeholder="Enter title of rule" onChange={e => setTitle(e.target.value)} value={title} />
+                    <Input style={{ width: 400 }} placeholder="Enter title of action" onChange={e => setTitle(e.target.value)} value={title} />
                     <Tag style={{ lineHeight: '28px', fontSize: '14px' }}>Description </Tag><TextArea style={{ width: 400 }} rows={3} onChange={e => setDescription(e.target.value)} value={description} />
 
                     {/* <Divider /> */}
@@ -488,7 +488,7 @@ function Categories() {
                             type="primary"
                             onClick={() => { setShowAddDrawer(!showAddDrawer) }
                             } >
-                            <PlusOutlined />Add Core Rule
+                            <PlusOutlined />Add Category
                         </Button>
                     </Col></Row>} >
                 <Table
@@ -506,7 +506,7 @@ function Categories() {
                 <Space direction="vertical" width="100%" size="middle">
                     <Tag style={{ lineHeight: '28px', fontSize: '14px' }}>Title </Tag>
                     {/* <Title level={5}>Title</Title> */}
-                    <Input style={{ width: 400 }} placeholder="Enter title of Core rule" onChange={e => setTitle(e.target.value)} value={title} />
+                    <Input style={{ width: 400 }} placeholder="Enter title of Core action" onChange={e => setTitle(e.target.value)} value={title} />
                     <Tag style={{ lineHeight: '28px', fontSize: '14px' }}>Description </Tag><TextArea style={{ width: 400 }} rows={3} onChange={e => setDescription(e.target.value)} value={description} />
 
                     {/* <Divider /> */}
@@ -545,6 +545,12 @@ function ProductClass() {
     const [mode, setmode] = useState('add')
     const [rowSelected, setrowSelected] = useState({})
 
+    const tagcolors = {
+        "Restock": "blue",
+        "Resale": "green",
+        "Dispose": "red"
+    }
+
     const columns = [
         // {
         //     title: 'SNo',
@@ -561,11 +567,13 @@ function ProductClass() {
             title: 'Keywords',
             dataIndex: 'keywords',
             key: 'keywords',
+            render : (text,record) => <ul>{record.keywords.split(",").map(item => <Tag>{item}</Tag>)}</ul>
         },
         {
-            title: 'Applied Rules',
+            title: 'Applied Actions',
             dataIndex: 'appliedRules',
             key: 'appliedRules',
+            render : (text,record) => <ul>{record.appliedRules.split(",").map(item => <Tag color={tagcolors[item]}>{item}</Tag>)}</ul>
         }, {
             title: 'Applied Questionnaires',
             dataIndex: 'appliedQuestionnaires',
@@ -667,12 +675,12 @@ function ProductClass() {
                     <Input style={{ width: 400 }} placeholder="Enter title of Product Class" onChange={e => setTitle(e.target.value)} value={title} />
                     <Tag style={{ lineHeight: '28px', fontSize: '14px' }}>Keywords </Tag>
                     <Input style={{ width: 400 }} placeholder="Enter Keywords" onChange={e => setKeywords(e.target.value)} value={keywords} />
-                    <Tag style={{ lineHeight: '28px', fontSize: '14px' }}>Select Applied Rules </Tag>
+                    <Tag style={{ lineHeight: '28px', fontSize: '14px' }}>Select Applied Actions </Tag>
                     <Select
                         mode="multiple"
                         // value={associatedCoreBusinessRule}
                         style={{ width: 400 }}
-                        placeholder="Select applied rules"
+                        placeholder="Select applied actions"
                         onChange={val => setactions(val)}
                     >
                         {businessRulesList.map(item => <Option value={item.title} key={item.id}>{item.title}</Option>)}
@@ -723,7 +731,7 @@ function Returns() {
 
     const tagcolors = {
         "Restock": "blue",
-        "Refurbish": "green",
+        "Resale": "green",
         "Dispose": "red"
     }
 
@@ -857,7 +865,7 @@ function Questionnaires() {
                     dataSource={questionnairesList}
                 />
             </Card>
-            <Drawer title="Add Questionnaire" placement="right" width="40%" onClose={() => {
+            <Drawer title="Add Questionnaire" placement="right" width="30%" onClose={() => {
                 setShowAddDrawer(false)
             }} visible={showAddDrawer}>
                 <Space direction="vertical" width="100%" size="middle">
@@ -884,11 +892,11 @@ function Questionnaires() {
                                     op[index]["option"] = e.target.value
                                     setoptions(op)
                                 }}></Input></div>
-                            <div className="flex-row mb-10"><Tag>Destination/Action</Tag><Select
+                            <div className="flex-row mb-10"><Tag>Action/Question</Tag><Select
 
                                 // value={associatedCoreBusinessRule}
-                                style={{ width: 275 }}
-                                placeholder="Select applied rules"
+                                style={{ width: 300 }}
+                                placeholder="Select applied actions"
                                 onChange={val => {
                                     let op = { ...options }
                                     if (!op[index]) op[index] = {}
@@ -896,7 +904,7 @@ function Questionnaires() {
                                     setoptions(op)
                                 }}
                             >
-                                {businessRulesList.map(item => <Option value={item.title} key={item.id}>{item.title}</Option>)}
+                                {[...businessRulesList.map(item => <Option value={item.title} key={item.id}><Tag>Action</Tag> {item.title}</Option>), ...questionnairesList.map(item => <Option value={item.question} key={item.id}><Tag>Question</Tag> {item.question}</Option>)]}
                             </Select></div>
                         </li>)
                     }</ul>

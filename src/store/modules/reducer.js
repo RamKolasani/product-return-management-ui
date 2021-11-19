@@ -1,14 +1,18 @@
 
 
 export const initialState = {
-    coreBusinessRulesList: [{ "id": "1", "sno": "1", "title": "Restock", "description": "Restock the product into inventory" },{ "id": "2", "sno": "2", "title": "Refurbish", "description": "Repair the product and sell second time" },{ "id": "3", "sno": "3", "title": "Dispose", "description": "Product beyond repair. to be recycled" }],
-    businessRulesList: [{ "id": "11", "sno": "11", "title": "Return to Seller", "description": "Product is good to restock. Return to Seller", "associatedCoreBusinessRule": 'Restock' },{ "id": "12", "sno": "12", "title": "Restock in Inventory", "description": "Return product to inventory", "associatedCoreBusinessRule": 'Restock' },{ "id": "13", "sno": "13", "title": "Refurbish to Auction", "description": "Refurbish product and log into aution items", "associatedCoreBusinessRule": 'Refurbish' }],
-    categoriesList: [{ "id": "1", "sno": "1", "title": "Electronics", "description": "electronics" }],
-    productClassList:[{"id":"21","sno":"21","title":"Laptop","keywords":"laptop,computer,pc","appliedRules":"Restock,Refurbish,Dispose","appliedQuestionnaires":"Is the device turning on?"},{"id":"22","sno":"22","title":"Mobile","keywords":"Mobile,Phone,Cell,Cellphone","appliedRules":"Restock,Refurbish,Dispose","appliedQuestionnaires":"Is the device turning on?"}],
+    coreBusinessRulesList: [{ "id": "1", "sno": "1", "title": "Restock", "description": "Restock the product into inventory" },{ "id": "2", "sno": "2", "title": "Resale", "description": "Repair the product and sell in auction" },{ "id": "3", "sno": "3", "title": "Dispose", "description": "Product beyond repair. To be recycled/disposed" }],
+    businessRulesList: [{ "id": "11", "sno": "11", "title": "Clearence", "description": "Product is good to restock. Return to Seller", "associatedCoreBusinessRule": 'Restock' },{ "id": "12", "sno": "12", "title": "Junk", "description": "Product to be disposed", "associatedCoreBusinessRule": 'Dispose' },{ "id": "13", "sno": "13", "title": "Refurbish", "description": "Refurbish product and log into auction items", "associatedCoreBusinessRule": 'Resale' }],
+    categoriesList: [{ "id": "1", "sno": "1", "title": "Electronics", "description": "All electronic products come under this category" }],
+    productClassList:[{"id":"21","sno":"21","title":"Laptop","keywords":"laptop,computer,pc","appliedRules":"Restock,Resale,Dispose","appliedQuestionnaires":"Is the device turning on?"},{"id":"22","sno":"22","title":"Mobile","keywords":"Mobile,Phone,Cell,Cellphone","appliedRules":"Restock,Resale,Dispose","appliedQuestionnaires":"Is the device turning on?"}],
     questionnairesList : [{
-        "id":"1","options":[{"option":"Yes","destination":"Refurbish"},{"option":"No","destination":"Restock"}],"productClass":"Laptop","question":"Is the device in apt condition?"
+        "id":"1","options":[{"option":"Yes","destination":"Restock"},{"option":"No","destination":"Are there any physical damage?"}],"productClass":"Laptop","question":"Is the device in apt condition?"
     },{
-        "id":"2","options":[{"option":"Yes","destination":"Refurbish"},{"option":"Minor wear & tear","destination":"Refurbish"},{"option":"No","destination":"Restock"}],"productClass":"Laptop","question":"Are there any physical damage?"
+        "id":"2","options":[{"option":"Yes","destination":"Is the damage repairable?"},{"option":"Minor wear & tear","destination":"Is the damage repairable?"},{"option":"No","destination":"Restock"}],"productClass":"Laptop","question":"Are there any physical damage?"
+    },{
+        "id":"3","options":[{"option":"Yes","destination":"Refurbish"},{"option":"No","destination":"Junk"}],"productClass":"Laptop","question":"Is the damage repairable?"
+    },{
+        "id":"4","options":[{"option":"Display","destination":"Refurbish"},{"option":"Internal","destination":"Refurbish"},{"option":"Housing","destination":"Refurbish"}],"productClass":"Laptop","question":"What is the damaged unit?"
     }],
     returnsList : [{
         "id":"1",
@@ -23,7 +27,7 @@ export const initialState = {
         "productTitle":"MacBook 2019",
         "productDescription":"MacBook 2019, 1TB, 14inch, Silver",
         "productClass":"Computer",
-        "appliedAction":"Refurbish"
+        "appliedAction":"Resell"
     },{
         "id":"3",
         "orderRef":"1279596",
